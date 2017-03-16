@@ -1,0 +1,31 @@
+package com.apicontroller;
+
+public class ErrorResponse {
+	private String messageError;
+	private String typeError;
+
+	public ErrorResponse(Exception e) {
+		this.setMessageError(e.getMessage());
+		this.setTypeError(e.getClass().getName());
+	}
+
+	public String getMessageError() {
+		return messageError;
+	}
+
+	public void setMessageError(String messageError) {
+		this.messageError = messageError;
+	}
+
+	public String getTypeError() {
+		return typeError;
+	}
+
+	public void setTypeError(String typeError) {
+		this.typeError = typeError;
+	}
+
+	public static ErrorResponse getErrorResponse(Exception e) {
+		return new ErrorResponse(e);
+	}
+}
