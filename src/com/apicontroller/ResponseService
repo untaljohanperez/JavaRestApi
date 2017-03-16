@@ -1,0 +1,17 @@
+package com.apicontroller;
+
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+
+public class ResponseService {
+
+	private ResponseService() {}
+	
+	public static Response errorResponse(Exception e){
+		return Response.status(Status.INTERNAL_SERVER_ERROR).entity(ErrorResponse.getErrorResponse(e)).build();
+	}
+	
+	public static <T> Response okResponse(T entity){
+		return Response.ok().entity(entity).build();
+	}
+}
